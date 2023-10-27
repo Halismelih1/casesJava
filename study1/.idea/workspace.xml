@@ -4,31 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02ccac36-0f8a-4fe4-867d-d9dcaf1e6cb9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Oop1/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Oop1/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Oop1/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Oop1/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Oop1/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Oop1/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Oop1/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Oop1/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Oop1/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Oop1/src/main/java/org/example/CorvorateCustomer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Oop1/src/main/java/org/example/Customer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Oop1/src/main/java/org/example/IndividualCustomer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Oop1/src/main/java/org/example/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Oop1/src/main/java/org/example/Product.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Oop1/target/classes/org/example/CorvorateCustomer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Oop1/target/classes/org/example/Customer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Oop1/target/classes/org/example/IndividualCustomer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Oop1/target/classes/org/example/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Oop1/target/classes/org/example/Product.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="02ccac36-0f8a-4fe4-867d-d9dcaf1e6cb9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
