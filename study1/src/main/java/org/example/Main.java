@@ -10,7 +10,7 @@ public class Main {
         String ortaMetin = "İlginizi çekebilir";
         String altMetin = "Vade süresi";
 
-        System.out.println(ortaMetin);
+        System.out.println(orta);
 
         int vade = 12;
 
