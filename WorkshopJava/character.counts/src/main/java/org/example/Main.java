@@ -13,6 +13,7 @@ public class Main {
         int[] charCount = new int[128];
 
         for (char c : input.toCharArray()) {
+
                 charCount[c]++;
         }
 
