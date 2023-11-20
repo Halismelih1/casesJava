@@ -1,7 +1,7 @@
 package org.example;
 
 public class Customer {
-    private String name;
+    private String Name;
     private String customerNumber;
     private String phone;
 
@@ -24,6 +24,7 @@ public class Customer {
     public String getPhone() {
         return phone;
     }
+
 
     public void setPhone(String phone) {
         this.phone = phone;
