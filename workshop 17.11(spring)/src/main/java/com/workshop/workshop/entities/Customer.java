@@ -1,6 +1,9 @@
 package com.workshop.workshop.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.math.BigInteger;
 import java.util.List;
 @Table(name = "customers")
 @Entity
@@ -22,6 +25,7 @@ public class Customer {
     private String adress;
 
     @OneToMany(mappedBy = "customer")
+    @JsonIgnore
     private List<Reservation> reservations;
 
 

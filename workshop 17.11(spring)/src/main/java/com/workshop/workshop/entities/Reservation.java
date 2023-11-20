@@ -12,7 +12,7 @@ public class Reservation {
     private int id;
 
     @Column(name = "total_price")
-    private Double totalPrice;
+    private int totalPrice;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
@@ -22,10 +22,9 @@ public class Reservation {
     @JoinColumn(name = "car_id")
     private Car car;
 
-
-
-
-
+    @ManyToOne
+    @JoinColumn(name = "discount_id")
+    private Discount discount;
 
 
 }
