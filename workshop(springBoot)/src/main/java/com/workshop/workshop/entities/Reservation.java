@@ -1,8 +1,13 @@
 package com.workshop.workshop.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "reservations")
 public class Reservation {

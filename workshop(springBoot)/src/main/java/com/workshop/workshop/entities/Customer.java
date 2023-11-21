@@ -2,9 +2,13 @@ package com.workshop.workshop.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigInteger;
 import java.util.List;
+@Getter
+@Setter
 @Table(name = "customers")
 @Entity
 public class Customer {
