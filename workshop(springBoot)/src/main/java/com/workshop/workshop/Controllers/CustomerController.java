@@ -35,4 +35,12 @@ public class CustomerController {
         Customer customerToDelete = customerRepository.findById(id).orElseThrow();
         customerRepository.delete(customerToDelete);
     }
+
+    @PutMapping("{id}")
+    public void update(@PathVariable int id, @RequestBody Customer updatedCustomer){
+        Customer customerToUpdate = customerRepository.findById(id).orElseThrow();
+        customerToUpdate.setFirstName(updatedCustomer.getFirstName());
+        customerToUpdate.setLastName(updatedCustomer.getLastName());
+        customerRepository.save(customerToUpdate);
+    }
 }

@@ -37,4 +37,12 @@ public class CarController {
         carRepository.delete(carToDelete);
     }
 
+    @PutMapping("{id}")
+     public void update(@RequestBody Car updatedCar,@PathVariable int id){
+        Car carToUpdate = carRepository.findById(id).orElseThrow();
+        carToUpdate.setModel(updatedCar.getModel());
+        carToUpdate.setAvailable(updatedCar.getAvailable());
+        carRepository.save(carToUpdate);
+    }
+
 }

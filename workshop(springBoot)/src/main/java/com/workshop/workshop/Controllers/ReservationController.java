@@ -37,4 +37,11 @@ public class ReservationController {
         Reservation reservationToDelete = reservationRepository.findById(id).orElseThrow();
         reservationRepository.delete(reservationToDelete);
     }
+
+    @PutMapping("{id}")
+    public void update(@PathVariable int id, @RequestBody Reservation updatedReservation){
+        Reservation reservationToUpdate = reservationRepository.findById(id).orElseThrow();
+        reservationToUpdate.setTotalPrice(updatedReservation.getTotalPrice());
+        reservationRepository.save(reservationToUpdate);
+    }
 }

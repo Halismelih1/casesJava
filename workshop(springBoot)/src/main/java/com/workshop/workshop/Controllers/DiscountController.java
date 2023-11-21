@@ -35,4 +35,12 @@ public class DiscountController {
         Discount discountToDelete = discountRepository.findById(id).orElseThrow();
         discountRepository.delete(discountToDelete);
     }
+
+    @PutMapping("{id}")
+    public void update(@PathVariable int id, @RequestBody Discount updatedDiscount){
+        Discount discountToUpdate = discountRepository.findById(id).orElseThrow();
+        discountToUpdate.setDiscountPercent(updatedDiscount.getDiscountPercent());
+        discountToUpdate.setDiscountType(updatedDiscount.getDiscountType());
+        discountRepository.save(discountToUpdate);
+    }
 }
