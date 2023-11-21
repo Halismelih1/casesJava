@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/car") //http://localhost:8080/car (GET)
+@RequestMapping("/car") //http://localhost:8080/car
 public class CarController {
     private final CarRepository carRepository;
 

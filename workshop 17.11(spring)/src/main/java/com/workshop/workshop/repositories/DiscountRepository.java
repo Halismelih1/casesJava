@@ -1,4 +1,7 @@
 package com.workshop.workshop.repositories;
 
-public interface DiscountRepository {
+import com.workshop.workshop.entities.Discount;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface DiscountRepository extends JpaRepository<Discount,Integer> {
 }
