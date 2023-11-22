@@ -21,6 +21,9 @@ public class ReservationManager implements ReservationService {
     public void add(AddReservationRequest request) {
         Reservation reservation = new Reservation();
         reservation.setTotalPrice(request.getTotalPrice());
+        reservation.setCar(request.getCar());
+        reservation.setCustomer(request.getCustomer());
+        reservation.setDiscount(request.getDiscount());
         reservationRepository.save(reservation);
 
     }
@@ -29,6 +32,9 @@ public class ReservationManager implements ReservationService {
     public void update(int id, UpdateReservationRequest request) {
         Reservation existingReservation = reservationRepository.findById(id).orElseThrow();
         existingReservation.setTotalPrice(request.getTotalPrice());
+        existingReservation.setCar(existingReservation.getCar());
+        existingReservation.setDiscount(existingReservation.getDiscount());
+        existingReservation.setCustomer(request.getCustomer());
         reservationRepository.save(existingReservation);
 
     }

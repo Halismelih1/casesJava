@@ -21,6 +21,8 @@ public class CarManager implements CarService {
     public void add(AddCarRequest request) {
         Car car = new Car();
         car.setModel(request.getModel());
+        car.setAvailable(request.getAvailable());
+        car.setBrand(request.getBrand());
         carRepository.save(car);
     }
 
@@ -35,6 +37,8 @@ public class CarManager implements CarService {
     public void update(int id, UpdateCarRequest request) {
         Car existingCar = carRepository.findById(id).orElseThrow();
         existingCar.setModel(request.getModel());
+        existingCar.setAvailable(request.getAvailable());
+        existingCar.setBrand(request.getBrand());
         carRepository.save(existingCar);
     }
 }
