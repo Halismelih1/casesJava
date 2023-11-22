@@ -1,8 +1,8 @@
 package com.workshop.workshop.Services.concretes;
 
 import com.workshop.workshop.Services.abstracts.BrandService;
-import com.workshop.workshop.Services.dto.brand.requests.AddBrandRequest;
-import com.workshop.workshop.Services.dto.brand.requests.UpdateBrandRequest;
+import com.workshop.workshop.Services.dto.brand.requests.Brand.AddBrandRequest;
+import com.workshop.workshop.Services.dto.brand.requests.Brand.UpdateBrandRequest;
 import com.workshop.workshop.entities.Brand;
 import com.workshop.workshop.repositories.BrandRepository;
 import org.springframework.beans.factory.annotation.Autowired;

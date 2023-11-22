@@ -1,9 +1,8 @@
 package com.workshop.workshop.Services.concretes;
 
-import com.workshop.workshop.Controllers.DiscountController;
 import com.workshop.workshop.Services.abstracts.DiscountService;
-import com.workshop.workshop.Services.dto.brand.requests.AddDiscountRequest;
-import com.workshop.workshop.Services.dto.brand.requests.UpdateDiscountRequest;
+import com.workshop.workshop.Services.dto.brand.requests.Discount.AddDiscountRequest;
+import com.workshop.workshop.Services.dto.brand.requests.Discount.UpdateDiscountRequest;
 import com.workshop.workshop.entities.Discount;
 import com.workshop.workshop.repositories.DiscountRepository;
 import org.springframework.beans.factory.annotation.Autowired;

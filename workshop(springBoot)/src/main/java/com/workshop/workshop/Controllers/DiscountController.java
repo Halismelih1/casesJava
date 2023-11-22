@@ -1,14 +1,9 @@
 package com.workshop.workshop.Controllers;
 
 import com.workshop.workshop.Services.abstracts.DiscountService;
-import com.workshop.workshop.Services.dto.brand.requests.AddDiscountRequest;
-import com.workshop.workshop.Services.dto.brand.requests.UpdateDiscountRequest;
-import com.workshop.workshop.entities.Discount;
-import com.workshop.workshop.entities.Reservation;
-import com.workshop.workshop.repositories.DiscountRepository;
+import com.workshop.workshop.Services.dto.brand.requests.Discount.AddDiscountRequest;
+import com.workshop.workshop.Services.dto.brand.requests.Discount.UpdateDiscountRequest;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 
 @RestController

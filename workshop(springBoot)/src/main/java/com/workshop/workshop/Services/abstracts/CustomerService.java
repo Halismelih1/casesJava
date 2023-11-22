@@ -1,7 +1,7 @@
 package com.workshop.workshop.Services.abstracts;
 
-import com.workshop.workshop.Services.dto.brand.requests.AddCustomerRequest;
-import com.workshop.workshop.Services.dto.brand.requests.UpdateCustomerRequest;
+import com.workshop.workshop.Services.dto.brand.requests.Customer.AddCustomerRequest;
+import com.workshop.workshop.Services.dto.brand.requests.Customer.UpdateCustomerRequest;
 
 public interface CustomerService {
     void add(AddCustomerRequest request);

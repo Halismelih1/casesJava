@@ -1,15 +1,9 @@
 package com.workshop.workshop.Controllers;
 
 import com.workshop.workshop.Services.abstracts.CustomerService;
-import com.workshop.workshop.Services.dto.brand.requests.AddBrandRequest;
-import com.workshop.workshop.Services.dto.brand.requests.AddCustomerRequest;
-import com.workshop.workshop.Services.dto.brand.requests.UpdateBrandRequest;
-import com.workshop.workshop.Services.dto.brand.requests.UpdateCustomerRequest;
-import com.workshop.workshop.entities.Customer;
-import com.workshop.workshop.repositories.CustomerRepository;
+import com.workshop.workshop.Services.dto.brand.requests.Customer.AddCustomerRequest;
+import com.workshop.workshop.Services.dto.brand.requests.Customer.UpdateCustomerRequest;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/customer") //http://localhost:8080/customer

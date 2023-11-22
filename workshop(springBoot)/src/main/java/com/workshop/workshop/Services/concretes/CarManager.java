@@ -1,9 +1,8 @@
 package com.workshop.workshop.Services.concretes;
 
 import com.workshop.workshop.Services.abstracts.CarService;
-import com.workshop.workshop.Services.dto.brand.requests.AddCarRequest;
-import com.workshop.workshop.Services.dto.brand.requests.UpdateCarRequest;
-import com.workshop.workshop.entities.Brand;
+import com.workshop.workshop.Services.dto.brand.requests.Car.AddCarRequest;
+import com.workshop.workshop.Services.dto.brand.requests.Car.UpdateCarRequest;
 import com.workshop.workshop.entities.Car;
 import com.workshop.workshop.repositories.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;

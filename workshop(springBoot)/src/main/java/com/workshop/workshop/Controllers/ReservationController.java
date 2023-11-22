@@ -1,15 +1,9 @@
 package com.workshop.workshop.Controllers;
 
 import com.workshop.workshop.Services.abstracts.ReservationService;
-import com.workshop.workshop.Services.dto.brand.requests.AddReservationRequest;
-import com.workshop.workshop.Services.dto.brand.requests.UpdateReservationRequest;
-import com.workshop.workshop.entities.Customer;
-import com.workshop.workshop.entities.Reservation;
-import com.workshop.workshop.repositories.CustomerRepository;
-import com.workshop.workshop.repositories.ReservationRepository;
+import com.workshop.workshop.Services.dto.brand.requests.Reservation.AddReservationRequest;
+import com.workshop.workshop.Services.dto.brand.requests.Reservation.UpdateReservationRequest;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/reservation") //http://localhost:8080/reservation

@@ -1,7 +1,7 @@
 package com.workshop.workshop.Services.abstracts;
 
-import com.workshop.workshop.Services.dto.brand.requests.AddReservationRequest;
-import com.workshop.workshop.Services.dto.brand.requests.UpdateReservationRequest;
+import com.workshop.workshop.Services.dto.brand.requests.Reservation.AddReservationRequest;
+import com.workshop.workshop.Services.dto.brand.requests.Reservation.UpdateReservationRequest;
 
 public interface ReservationService {
     void add(AddReservationRequest request);

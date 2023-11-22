@@ -1,8 +1,8 @@
 package com.workshop.workshop.Services.concretes;
 
 import com.workshop.workshop.Services.abstracts.CustomerService;
-import com.workshop.workshop.Services.dto.brand.requests.AddCustomerRequest;
-import com.workshop.workshop.Services.dto.brand.requests.UpdateCustomerRequest;
+import com.workshop.workshop.Services.dto.brand.requests.Customer.AddCustomerRequest;
+import com.workshop.workshop.Services.dto.brand.requests.Customer.UpdateCustomerRequest;
 import com.workshop.workshop.entities.Customer;
 import com.workshop.workshop.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,11 +1,9 @@
 package com.workshop.workshop.Controllers;
 
 import com.workshop.workshop.Services.abstracts.BrandService;
-import com.workshop.workshop.Services.dto.brand.requests.AddBrandRequest;
-import com.workshop.workshop.Services.dto.brand.requests.UpdateBrandRequest;
+import com.workshop.workshop.Services.dto.brand.requests.Brand.AddBrandRequest;
+import com.workshop.workshop.Services.dto.brand.requests.Brand.UpdateBrandRequest;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/brand") //http://localhost:8080/brand

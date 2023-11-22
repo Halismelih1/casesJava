@@ -1,9 +1,9 @@
-package com.workshop.workshop.Services.dto.brand.requests;
+package com.workshop.workshop.Services.dto.brand.requests.Customer;
 
 import lombok.Data;
 
 @Data
-public class UpdateCustomerRequest {
+public class AddCustomerRequest {
     private int id;
     private String firstName;
     private String lastName;
