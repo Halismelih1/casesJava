@@ -1,5 +1,8 @@
 package com.workshop.workshop.Controllers;
 
+import com.workshop.workshop.Services.abstracts.ReservationService;
+import com.workshop.workshop.Services.dto.brand.requests.AddReservationRequest;
+import com.workshop.workshop.Services.dto.brand.requests.UpdateReservationRequest;
 import com.workshop.workshop.entities.Customer;
 import com.workshop.workshop.entities.Reservation;
 import com.workshop.workshop.repositories.CustomerRepository;
@@ -12,36 +15,37 @@ import java.util.List;
 @RequestMapping("/reservation") //http://localhost:8080/reservation
 
 public class ReservationController {
-    private final ReservationRepository reservationRepository;
+    private final ReservationService reservationService;
 
-    public ReservationController(ReservationRepository reservationRepository){this.reservationRepository = reservationRepository; }
+    public ReservationController(ReservationService reservationService)
+    {this.reservationService = reservationService; }
 
-    @GetMapping
-    public List<Reservation> getAll(){
-        List<Reservation> reservations = reservationRepository.findAll();
-        return reservations;
-    }
-
-    @GetMapping("{id}")
-    public Reservation getById(@PathVariable int id){
-        return reservationRepository.findById(id).orElseThrow();
-    }
 
     @PostMapping
-    public void add(@RequestBody Reservation reservation){
-        reservationRepository.save(reservation);
+    public void add(@RequestBody AddReservationRequest request){
+        reservationService.add(request);
     }
 
     @DeleteMapping("{id}")
     public void delete(@PathVariable int id){
-        Reservation reservationToDelete = reservationRepository.findById(id).orElseThrow();
-        reservationRepository.delete(reservationToDelete);
+        reservationService.delete(id);
     }
 
     @PutMapping("{id}")
-    public void update(@PathVariable int id, @RequestBody Reservation updatedReservation){
-        Reservation reservationToUpdate = reservationRepository.findById(id).orElseThrow();
-        reservationToUpdate.setTotalPrice(updatedReservation.getTotalPrice());
-        reservationRepository.save(reservationToUpdate);
+    public void update(@PathVariable int id, @RequestBody UpdateReservationRequest request){
+        reservationService.update(id, request);
     }
+
+    //@GetMapping
+    //public List<Reservation> getAll(){
+        //List<Reservation> reservations = reservationRepository.findAll();
+        //return reservations;
+    //}
+
+    //@GetMapping("{id}")
+    //public Reservation getById(@PathVariable int id){
+        //return reservationRepository.findById(id).orElseThrow();
+    //}
+
+
 }

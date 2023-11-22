@@ -1,5 +1,8 @@
 package com.workshop.workshop.Controllers;
 
+import com.workshop.workshop.Services.abstracts.DiscountService;
+import com.workshop.workshop.Services.dto.brand.requests.AddDiscountRequest;
+import com.workshop.workshop.Services.dto.brand.requests.UpdateDiscountRequest;
 import com.workshop.workshop.entities.Discount;
 import com.workshop.workshop.entities.Reservation;
 import com.workshop.workshop.repositories.DiscountRepository;
@@ -12,35 +15,34 @@ import java.util.List;
 @RequestMapping("/discount")
 
 public class DiscountController {
-    private final DiscountRepository discountRepository;
-    public DiscountController(DiscountRepository discountRepository){this.discountRepository = discountRepository; }
+    private final DiscountService discountService;
+    public DiscountController(DiscountService discountService){this.discountService = discountService; }
 
-    @GetMapping
-    public List<Discount> getAll(){
-        List<Discount> discounts = discountRepository.findAll();
-        return discounts;
-    }
-    @GetMapping("{id}")
-    public Discount getbyId(@PathVariable int id){
-        return discountRepository.findById(id).orElseThrow();
-    }
 
     @PostMapping
-    public void add(@RequestBody Discount discount){
-        discountRepository.save(discount);
+    public void add(@RequestBody AddDiscountRequest request){
+        discountService.add(request);
     }
 
     @DeleteMapping("{id}")
     public void delete(@PathVariable int id){
-        Discount discountToDelete = discountRepository.findById(id).orElseThrow();
-        discountRepository.delete(discountToDelete);
+        discountService.delete(id);
     }
 
     @PutMapping("{id}")
-    public void update(@PathVariable int id, @RequestBody Discount updatedDiscount){
-        Discount discountToUpdate = discountRepository.findById(id).orElseThrow();
-        discountToUpdate.setDiscountPercent(updatedDiscount.getDiscountPercent());
-        discountToUpdate.setDiscountType(updatedDiscount.getDiscountType());
-        discountRepository.save(discountToUpdate);
+    public void update(@PathVariable int id, @RequestBody UpdateDiscountRequest request){
+      discountService.update(request, id);
     }
+
+    //@GetMapping
+    //public List<Discount> getAll(){
+        //List<Discount> discounts = discountRepository.findAll();
+        //return discounts;
+    //}
+    //@GetMapping("{id}")
+    //public Discount getbyId(@PathVariable int id){
+        //return discountRepository.findById(id).orElseThrow();
+    //}
+
+
 }

@@ -28,7 +28,7 @@ public class Customer {
     @Column(name = "adress")
     private String adress;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Reservation> reservations;
 

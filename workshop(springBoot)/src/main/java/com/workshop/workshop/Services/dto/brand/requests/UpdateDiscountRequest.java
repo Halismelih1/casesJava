@@ -3,7 +3,8 @@ package com.workshop.workshop.Services.dto.brand.requests;
 import lombok.Data;
 
 @Data
-public class UpdateBrandRequest {
+public class UpdateDiscountRequest {
     private int id;
-    private String brandName;
+    private String discountType;
+    private int discountPercent;
 }

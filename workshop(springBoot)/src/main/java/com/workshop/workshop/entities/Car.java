@@ -25,7 +25,7 @@ public class Car {
     @Column(name = "available")
     private Boolean available;
 
-    @OneToMany(mappedBy = "car")
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Reservation>reservations;
 

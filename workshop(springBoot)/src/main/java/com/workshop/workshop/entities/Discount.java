@@ -25,7 +25,7 @@ public class Discount {
     @Column(name = "discount_percent")
     private int discountPercent;
 
-    @OneToMany(mappedBy = "discount")
+    @OneToMany(mappedBy = "discount",cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Reservation>reservations;
 

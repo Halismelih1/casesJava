@@ -16,20 +16,21 @@ public class BrandController {
         this.brandService = brandService;
     }
 
-    @PostMapping
-    public void add(@RequestBody AddBrandRequest request){
+    @PostMapping //Add
+    public void add(@RequestBody AddBrandRequest request) {
         brandService.add(request);
     }
 
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable int id){
+    @DeleteMapping("{id}") //Delete
+    public void delete(@PathVariable int id) {
         brandService.delete(id);
     }
 
-    @PutMapping("{id}")
-    public void update(@PathVariable int id, @RequestBody UpdateBrandRequest request){
+    @PutMapping("{id}") //Update
+    public void update(@PathVariable int id, @RequestBody UpdateBrandRequest request) {
         brandService.update(id, request);
     }
+}
 
     // @GetMapping
     //public List<Brand> getAll(){
@@ -58,4 +59,4 @@ public class BrandController {
         //brandToUpdate.setBrandName(updatedBrand.getBrandName());
         //brandRepository.save(brandToUpdate);
     //}
-}
+
