@@ -1,7 +1,8 @@
 package com.workshop.workshop.Controllers;
 
-import com.workshop.workshop.entities.Brand;
-import com.workshop.workshop.repositories.BrandRepository;
+import com.workshop.workshop.Services.abstracts.BrandService;
+import com.workshop.workshop.Services.dto.brand.requests.AddBrandRequest;
+import com.workshop.workshop.Services.dto.brand.requests.UpdateBrandRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,40 +10,52 @@ import java.util.List;
 @RestController
 @RequestMapping("/brand") //http://localhost:8080/brand
 public class BrandController {
-    private final BrandRepository brandRepository;
+    private BrandService brandService;
 
-    public BrandController(BrandRepository brandRepository) {
-        this.brandRepository = brandRepository;
-    }
-
-    @GetMapping
-    public List<Brand> getAll(){
-        List<Brand> brands = brandRepository.findAll();
-        return brands;
-    }
-
-    @GetMapping("{id}")
-    public Brand getById(@PathVariable int id){
-        return brandRepository.findById(id)
-                .orElseThrow();
+    public BrandController(BrandService brandService) {
+        this.brandService = brandService;
     }
 
     @PostMapping
-    public void add(@RequestBody Brand brand){
-        brandRepository.save(brand);
+    public void add(@RequestBody AddBrandRequest request){
+        brandService.add(request);
     }
 
     @DeleteMapping("{id}")
     public void delete(@PathVariable int id){
-        Brand brandToDelete = brandRepository.findById(id)
-                .orElseThrow();
-        brandRepository.delete(brandToDelete);
+        brandService.delete(id);
     }
 
     @PutMapping("{id}")
-    public void update(@RequestBody Brand updatedBrand,@PathVariable int id){
-        Brand brandToUpdate = brandRepository.findById(id).orElseThrow();
-        brandToUpdate.setBrandName(updatedBrand.getBrandName());
-        brandRepository.save(brandToUpdate);
+    public void update(@PathVariable int id, @RequestBody UpdateBrandRequest request){
+        brandService.update(id, request);
     }
+
+    // @GetMapping
+    //public List<Brand> getAll(){
+       // List<Brand> brands = brandRepository.findAll();
+        //return brands;
+    //}
+
+    // @GetMapping("{id}")
+    //public Brand getById(@PathVariable int id){
+        //return brandRepository.findById(id)
+                //.orElseThrow();
+    //}
+
+
+
+    //@DeleteMapping("{id}")
+    //public void delete(@PathVariable int id){
+        //Brand brandToDelete = brandRepository.findById(id)
+            //    .orElseThrow();
+        //brandRepository.delete(brandToDelete);
+    //}
+
+    //@PutMapping("{id}")
+    //public void update(@RequestBody Brand updatedBrand,@PathVariable int id){
+        //Brand brandToUpdate = brandRepository.findById(id).orElseThrow();
+        //brandToUpdate.setBrandName(updatedBrand.getBrandName());
+        //brandRepository.save(brandToUpdate);
+    //}
 }
