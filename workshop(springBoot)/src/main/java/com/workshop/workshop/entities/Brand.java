@@ -19,6 +19,9 @@ public class Brand {
     @Column(name = "brand_name")
     private String brandName;
 
+    @Column(name = "contracted_gas_station")
+    private String contractedGasStation;
+
     @OneToMany(mappedBy = "brand",cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Car>cars;

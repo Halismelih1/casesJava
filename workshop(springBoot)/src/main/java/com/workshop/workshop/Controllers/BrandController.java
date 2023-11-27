@@ -3,7 +3,11 @@ package com.workshop.workshop.Controllers;
 import com.workshop.workshop.Services.abstracts.BrandService;
 import com.workshop.workshop.Services.dto.brand.requests.Brand.AddBrandRequest;
 import com.workshop.workshop.Services.dto.brand.requests.Brand.UpdateBrandRequest;
+import com.workshop.workshop.entities.Brand;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/brand") //http://localhost:8080/brand
@@ -12,6 +16,16 @@ public class BrandController {
 
     public BrandController(BrandService brandService) {
         this.brandService = brandService;
+    }
+
+    @GetMapping("/byBrandName/{brandName}")
+    public ResponseEntity <List<Brand>> getByBrandName(@RequestParam("brandName")String brandName){
+        List<Brand> brands = brandService.getByBrandName(brandName);
+        if (!brands.isEmpty()) {
+            return ResponseEntity.ok(brands);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping //Add

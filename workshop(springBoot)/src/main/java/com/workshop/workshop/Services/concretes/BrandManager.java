@@ -8,6 +8,9 @@ import com.workshop.workshop.repositories.BrandRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class BrandManager implements BrandService {
 
@@ -38,4 +41,15 @@ public class BrandManager implements BrandService {
         existingBrand.setBrandName(request.getBrandName());
         brandRepository.save(existingBrand);
     }
+
+    @Override
+    public List<Brand> getByBrandName(String brandName) {
+        List<Brand> brands = new ArrayList<>();
+        Brand brand = brandRepository.findByBrandName(brandName);
+        if (brand != null) {
+            brands.add(brand);
+        }
+        return brands;
+    }
+
 }
