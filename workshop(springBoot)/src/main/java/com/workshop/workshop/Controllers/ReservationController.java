@@ -3,7 +3,10 @@ package com.workshop.workshop.Controllers;
 import com.workshop.workshop.Services.abstracts.ReservationService;
 import com.workshop.workshop.Services.dto.brand.requests.Reservation.AddReservationRequest;
 import com.workshop.workshop.Services.dto.brand.requests.Reservation.UpdateReservationRequest;
+import com.workshop.workshop.entities.Reservation;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/reservation") //http://localhost:8080/reservation
@@ -14,6 +17,15 @@ public class ReservationController {
     public ReservationController(ReservationService reservationService)
     {this.reservationService = reservationService; }
 
+    @GetMapping
+    public List<Reservation> getAll() {
+        return reservationService.getAll();
+    }
+
+    @GetMapping("/byTotalPriceRange")
+    public List<Reservation> getByTotalPriceRange(@RequestParam int minPrice, @RequestParam int maxPrice) {
+        return reservationService.findByTotalPriceRange(minPrice, maxPrice);
+    }
 
     @PostMapping
     public void add(@RequestBody AddReservationRequest request){

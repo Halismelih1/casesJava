@@ -4,6 +4,7 @@ import com.workshop.workshop.Services.abstracts.CarService;
 import com.workshop.workshop.Services.dto.brand.requests.Car.AddCarRequest;
 import com.workshop.workshop.Services.dto.brand.requests.Car.UpdateCarRequest;
 import com.workshop.workshop.entities.Car;
+import com.workshop.workshop.entities.Reservation;
 import com.workshop.workshop.repositories.CarRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -67,5 +68,9 @@ public class CarManager implements CarService {
         return entityManager.createQuery(jpqlQuery, Car.class)
                 .setParameter("model", model)
                 .getResultList();
+    }
+    @Override
+    public List<Car> getAll() {
+        return carRepository.findAll();
     }
 }

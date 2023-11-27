@@ -4,6 +4,7 @@ import com.workshop.workshop.Services.abstracts.BrandService;
 import com.workshop.workshop.Services.dto.brand.requests.Brand.AddBrandRequest;
 import com.workshop.workshop.Services.dto.brand.requests.Brand.UpdateBrandRequest;
 import com.workshop.workshop.entities.Brand;
+import com.workshop.workshop.entities.Reservation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,11 @@ public class BrandController {
 
     public BrandController(BrandService brandService) {
         this.brandService = brandService;
+    }
+
+    @GetMapping
+    public List<Brand> getAll() {
+        return brandService.getAll();
     }
 
     @GetMapping("/byBrandName/{brandName}")

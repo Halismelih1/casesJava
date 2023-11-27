@@ -8,6 +8,8 @@ import com.workshop.workshop.repositories.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ReservationManager implements ReservationService {
 
@@ -43,5 +45,15 @@ public class ReservationManager implements ReservationService {
     public void delete(int id) {
         reservationRepository.deleteById(id);
 
+    }
+
+    @Override
+    public List<Reservation> findByTotalPriceRange(int minPrice, int maxPrice) {
+        return reservationRepository.findByTotalPriceRange(minPrice, maxPrice);
+    }
+
+    @Override
+    public List<Reservation> getAll() {
+        return reservationRepository.findAll();
     }
 }

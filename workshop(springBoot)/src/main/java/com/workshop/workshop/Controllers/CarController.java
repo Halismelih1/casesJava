@@ -4,6 +4,7 @@ import com.workshop.workshop.Services.abstracts.CarService;
 import com.workshop.workshop.Services.dto.brand.requests.Car.AddCarRequest;
 import com.workshop.workshop.Services.dto.brand.requests.Car.UpdateCarRequest;
 import com.workshop.workshop.entities.Car;
+import com.workshop.workshop.entities.Reservation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,10 @@ public class CarController {
     public CarController(CarService carService) {
         this.carService = carService;
     }
-
+    @GetMapping
+    public List<Car> getAll() {
+        return carService.getAll();
+    }
     @GetMapping("byBrandId/{brandId}")
     public ResponseEntity <List<Car>> getByBrandId(@RequestParam("brandId") int brandId) {
         List<Car> cars = carService.getByBrandId(brandId);
