@@ -8,6 +8,8 @@ import com.workshop.workshop.repositories.DiscountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DiscountManager implements DiscountService {
 
@@ -40,5 +42,20 @@ public class DiscountManager implements DiscountService {
 
         discountRepository.deleteById(id);
 
+    }
+
+    @Override
+    public List<Discount> getAll() {
+        return discountRepository.findAll();
+    }
+
+    @Override
+    public List<Discount> getByDiscountPercentRange(int minPercent, int maxPercent) {
+        return discountRepository.findByDiscountPercentRange(minPercent, maxPercent);
+    }
+
+    @Override
+    public List<Discount> getByDiscountType(String discountType) {
+        return discountRepository.findByDiscountType(discountType);
     }
 }

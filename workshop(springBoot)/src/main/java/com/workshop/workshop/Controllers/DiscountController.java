@@ -3,7 +3,10 @@ package com.workshop.workshop.Controllers;
 import com.workshop.workshop.Services.abstracts.DiscountService;
 import com.workshop.workshop.Services.dto.brand.requests.Discount.AddDiscountRequest;
 import com.workshop.workshop.Services.dto.brand.requests.Discount.UpdateDiscountRequest;
+import com.workshop.workshop.entities.Discount;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -12,6 +15,21 @@ import org.springframework.web.bind.annotation.*;
 public class DiscountController {
     private final DiscountService discountService;
     public DiscountController(DiscountService discountService){this.discountService = discountService; }
+
+    @GetMapping
+    public List<Discount> getAllDiscounts() {
+        return discountService.getAll();
+    }
+
+    @GetMapping("/byPercentRange")
+    public List<Discount> getByDiscountPercentRange(@RequestParam int minPercent, @RequestParam int maxPercent) {
+        return discountService.getByDiscountPercentRange(minPercent, maxPercent);
+    }
+
+    @GetMapping("/byType")
+    public List<Discount> getByDiscountType(@RequestParam String discountType) {
+        return discountService.getByDiscountType(discountType);
+    }
 
 
     @PostMapping
@@ -29,15 +47,7 @@ public class DiscountController {
       discountService.update(request, id);
     }
 
-    //@GetMapping
-    //public List<Discount> getAll(){
-        //List<Discount> discounts = discountRepository.findAll();
-        //return discounts;
-    //}
-    //@GetMapping("{id}")
-    //public Discount getbyId(@PathVariable int id){
-        //return discountRepository.findById(id).orElseThrow();
-    //}
+
 
 
 }

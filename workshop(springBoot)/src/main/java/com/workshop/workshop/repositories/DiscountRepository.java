@@ -2,6 +2,16 @@ package com.workshop.workshop.repositories;
 
 import com.workshop.workshop.entities.Discount;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
 
 public interface DiscountRepository extends JpaRepository<Discount,Integer> {
+    List<Discount> findAll();
+
+    @Query("SELECT d FROM Discount d WHERE d.discountPercent BETWEEN :minPercent AND :maxPercent")
+    List<Discount> findByDiscountPercentRange(@Param("minPercent") int minPercent, @Param("maxPercent") int maxPercent);
+
+    List<Discount> findByDiscountType(String discountType);
 }

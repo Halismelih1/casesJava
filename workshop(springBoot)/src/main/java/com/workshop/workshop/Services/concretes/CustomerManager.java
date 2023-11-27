@@ -8,6 +8,8 @@ import com.workshop.workshop.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class CustomerManager implements CustomerService {
@@ -47,5 +49,20 @@ public class CustomerManager implements CustomerService {
 
         customerRepository.deleteById(id);
 
+    }
+
+    @Override
+    public List<Customer> getAll() {
+        return customerRepository.findAll();
+    }
+
+    @Override
+    public List<Customer> getByFirstNameUsingJPQL(String firstName) {
+        return customerRepository.findByFirstNameUsingJPQL(firstName);
+    }
+
+    @Override
+    public List<Customer> getByAdress(String adress) {
+        return customerRepository.findByAdress(adress);
     }
 }
