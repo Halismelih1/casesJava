@@ -1,14 +1,16 @@
 package com.workshop.workshop.Services.concretes;
 
 import com.workshop.workshop.Services.abstracts.ReservationService;
-import com.workshop.workshop.Services.dto.brand.requests.Reservation.AddReservationRequest;
-import com.workshop.workshop.Services.dto.brand.requests.Reservation.UpdateReservationRequest;
+import com.workshop.workshop.Services.dto.requests.Reservation.AddReservationRequest;
+import com.workshop.workshop.Services.dto.requests.Reservation.UpdateReservationRequest;
+import com.workshop.workshop.Services.dto.responses.Reservation.ReservationResponse;
 import com.workshop.workshop.entities.Reservation;
 import com.workshop.workshop.repositories.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ReservationManager implements ReservationService {
@@ -48,8 +50,18 @@ public class ReservationManager implements ReservationService {
     }
 
     @Override
-    public List<Reservation> findByTotalPriceRange(int minPrice, int maxPrice) {
-        return reservationRepository.findByTotalPriceRange(minPrice, maxPrice);
+    //TODO : StreamApi Used
+
+    public List<ReservationResponse> findByTotalPriceRange(int minPrice, int maxPrice) {
+        return reservationRepository.findByTotalPriceRange(minPrice, maxPrice).stream()
+                .map(reservation -> new ReservationResponse(
+                        reservation.getId(),
+                        reservation.getTotalPrice(),
+                        reservation.getCustomer(),
+                        reservation.getCar(),
+                        reservation.getDiscount()
+                ))
+                .collect(Collectors.toList());
     }
 
     @Override

@@ -1,24 +1,26 @@
 package com.workshop.workshop.Services.concretes;
 
 import com.workshop.workshop.Services.abstracts.BrandService;
-import com.workshop.workshop.Services.dto.brand.requests.Brand.AddBrandRequest;
-import com.workshop.workshop.Services.dto.brand.requests.Brand.UpdateBrandRequest;
+import com.workshop.workshop.Services.dto.requests.Brand.AddBrandRequest;
+import com.workshop.workshop.Services.dto.requests.Brand.UpdateBrandRequest;
+import com.workshop.workshop.Services.dto.responses.Brand.BrandResponse;
 import com.workshop.workshop.entities.Brand;
-import com.workshop.workshop.entities.Reservation;
 import com.workshop.workshop.repositories.BrandRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BrandManager implements BrandService {
 
     private final BrandRepository brandRepository;
+
     @Autowired
-    public BrandManager(BrandRepository brandRepository){
-        this.brandRepository=brandRepository;
+    public BrandManager(BrandRepository brandRepository) {
+        this.brandRepository = brandRepository;
     }
 
 
@@ -43,15 +45,24 @@ public class BrandManager implements BrandService {
         brandRepository.save(existingBrand);
     }
 
+
     @Override
-    public List<Brand> getByBrandName(String brandName) {
-        List<Brand> brands = new ArrayList<>();
-        Brand brand = brandRepository.findByBrandName(brandName);
-        if (brand != null) {
-            brands.add(brand);
-        }
-        return brands;
+
+    //TODO : StreamApi Used
+
+
+    //public List<BrandResponse> getByBrandName(String brandName) {
+    //return brandRepository.findByBrandName(brandName);
+
+    public List<BrandResponse> getByBrandName(String brandName) {
+        List<BrandResponse> brandList = brandRepository.findByBrandName(brandName);
+
+        return brandList.stream()
+                .map(brand -> new BrandResponse(brand.getId(), brand.getBrandName(), brand.getContractedGasStation()))
+                .collect(Collectors.toList());
+
     }
+
     @Override
     public List<Brand> getAll() {
         return brandRepository.findAll();

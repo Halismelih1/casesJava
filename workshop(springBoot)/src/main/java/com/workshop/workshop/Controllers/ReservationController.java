@@ -1,8 +1,9 @@
 package com.workshop.workshop.Controllers;
 
 import com.workshop.workshop.Services.abstracts.ReservationService;
-import com.workshop.workshop.Services.dto.brand.requests.Reservation.AddReservationRequest;
-import com.workshop.workshop.Services.dto.brand.requests.Reservation.UpdateReservationRequest;
+import com.workshop.workshop.Services.dto.requests.Reservation.AddReservationRequest;
+import com.workshop.workshop.Services.dto.requests.Reservation.UpdateReservationRequest;
+import com.workshop.workshop.Services.dto.responses.Reservation.ReservationResponse;
 import com.workshop.workshop.entities.Reservation;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class ReservationController {
     }
 
     @GetMapping("/byTotalPriceRange")
-    public List<Reservation> getByTotalPriceRange(@RequestParam int minPrice, @RequestParam int maxPrice) {
+    public List<ReservationResponse> getByTotalPriceRange(@RequestParam int minPrice, @RequestParam int maxPrice) {
         return reservationService.findByTotalPriceRange(minPrice, maxPrice);
     }
 
@@ -42,16 +43,7 @@ public class ReservationController {
         reservationService.update(id, request);
     }
 
-    //@GetMapping
-    //public List<Reservation> getAll(){
-        //List<Reservation> reservations = reservationRepository.findAll();
-        //return reservations;
-    //}
 
-    //@GetMapping("{id}")
-    //public Reservation getById(@PathVariable int id){
-        //return reservationRepository.findById(id).orElseThrow();
-    //}
 
 
 }

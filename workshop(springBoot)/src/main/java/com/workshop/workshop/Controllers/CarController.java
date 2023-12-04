@@ -1,10 +1,10 @@
 package com.workshop.workshop.Controllers;
 
 import com.workshop.workshop.Services.abstracts.CarService;
-import com.workshop.workshop.Services.dto.brand.requests.Car.AddCarRequest;
-import com.workshop.workshop.Services.dto.brand.requests.Car.UpdateCarRequest;
+import com.workshop.workshop.Services.dto.requests.Car.AddCarRequest;
+import com.workshop.workshop.Services.dto.responses.Car.CarResponse;
+import com.workshop.workshop.Services.dto.requests.Car.UpdateCarRequest;
 import com.workshop.workshop.entities.Car;
-import com.workshop.workshop.entities.Reservation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +22,7 @@ public class CarController {
     public List<Car> getAll() {
         return carService.getAll();
     }
-    @GetMapping("byBrandId/{brandId}")
+    @GetMapping("/byBrandId/{brandId}")
     public ResponseEntity <List<Car>> getByBrandId(@RequestParam("brandId") int brandId) {
         List<Car> cars = carService.getByBrandId(brandId);
         if (!cars.isEmpty()) {
@@ -42,14 +42,9 @@ public class CarController {
         }
     }
 
-    @GetMapping("/byModelJPQL/{model}")
-    public ResponseEntity<List<Car>> getByModelJPQL(@PathVariable String model) {
-        List<Car> cars = carService.findByModelJPQL(model);
-        if (!cars.isEmpty()) {
-            return ResponseEntity.ok(cars);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    @GetMapping("/byModelJPQL")
+    public List<CarResponse> getByModelJPQL(@RequestParam String model) {
+        return carService.findByModelJPQL(model);
     }
 
     @PostMapping

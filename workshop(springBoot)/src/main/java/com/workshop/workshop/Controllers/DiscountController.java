@@ -1,8 +1,9 @@
 package com.workshop.workshop.Controllers;
 
 import com.workshop.workshop.Services.abstracts.DiscountService;
-import com.workshop.workshop.Services.dto.brand.requests.Discount.AddDiscountRequest;
-import com.workshop.workshop.Services.dto.brand.requests.Discount.UpdateDiscountRequest;
+import com.workshop.workshop.Services.dto.requests.Discount.AddDiscountRequest;
+import com.workshop.workshop.Services.dto.requests.Discount.UpdateDiscountRequest;
+import com.workshop.workshop.Services.dto.responses.Discount.DiscountResponse;
 import com.workshop.workshop.entities.Discount;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +23,7 @@ public class DiscountController {
     }
 
     @GetMapping("/byPercentRange")
-    public List<Discount> getByDiscountPercentRange(@RequestParam int minPercent, @RequestParam int maxPercent) {
+    public List<DiscountResponse> getByDiscountPercentRange(@RequestParam int minPercent, @RequestParam int maxPercent) {
         return discountService.getByDiscountPercentRange(minPercent, maxPercent);
     }
 

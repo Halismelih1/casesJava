@@ -1,8 +1,9 @@
 package com.workshop.workshop.Controllers;
 
 import com.workshop.workshop.Services.abstracts.CustomerService;
-import com.workshop.workshop.Services.dto.brand.requests.Customer.AddCustomerRequest;
-import com.workshop.workshop.Services.dto.brand.requests.Customer.UpdateCustomerRequest;
+import com.workshop.workshop.Services.dto.requests.Customer.AddCustomerRequest;
+import com.workshop.workshop.Services.dto.requests.Customer.UpdateCustomerRequest;
+import com.workshop.workshop.Services.dto.responses.Customer.CustomerResponse;
 import com.workshop.workshop.entities.Customer;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +23,7 @@ public class CustomerController {
     }
 
     @GetMapping("/byFirstNameUsingJPQL")
-    public List<Customer> getByFirstNameUsingJPQL(@RequestParam String firstName) {
+    public List<CustomerResponse> getByFirstNameUsingJPQL(@RequestParam String firstName) {
         return customerService.getByFirstNameUsingJPQL(firstName);
     }
 

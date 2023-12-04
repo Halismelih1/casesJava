@@ -1,4 +1,4 @@
-package com.workshop.workshop.Services.dto.brand.requests.Discount;
+package com.workshop.workshop.Services.dto.requests.Discount;
 
 import lombok.Data;
 

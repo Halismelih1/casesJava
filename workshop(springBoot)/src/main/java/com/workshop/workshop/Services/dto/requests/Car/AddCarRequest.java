@@ -1,4 +1,4 @@
-package com.workshop.workshop.Services.dto.brand.requests.Car;
+package com.workshop.workshop.Services.dto.requests.Car;
 
 import com.workshop.workshop.entities.Brand;
 import lombok.Data;

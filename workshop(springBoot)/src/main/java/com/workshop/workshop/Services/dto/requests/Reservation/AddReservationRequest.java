@@ -1,4 +1,4 @@
-package com.workshop.workshop.Services.dto.brand.requests.Reservation;
+package com.workshop.workshop.Services.dto.requests.Reservation;
 
 import com.workshop.workshop.entities.Car;
 import com.workshop.workshop.entities.Customer;

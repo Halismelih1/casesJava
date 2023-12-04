@@ -1,14 +1,16 @@
 package com.workshop.workshop.Services.concretes;
 
 import com.workshop.workshop.Services.abstracts.DiscountService;
-import com.workshop.workshop.Services.dto.brand.requests.Discount.AddDiscountRequest;
-import com.workshop.workshop.Services.dto.brand.requests.Discount.UpdateDiscountRequest;
+import com.workshop.workshop.Services.dto.requests.Discount.AddDiscountRequest;
+import com.workshop.workshop.Services.dto.requests.Discount.UpdateDiscountRequest;
+import com.workshop.workshop.Services.dto.responses.Discount.DiscountResponse;
 import com.workshop.workshop.entities.Discount;
 import com.workshop.workshop.repositories.DiscountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class DiscountManager implements DiscountService {
@@ -49,9 +51,14 @@ public class DiscountManager implements DiscountService {
         return discountRepository.findAll();
     }
 
+
     @Override
-    public List<Discount> getByDiscountPercentRange(int minPercent, int maxPercent) {
-        return discountRepository.findByDiscountPercentRange(minPercent, maxPercent);
+    //TODO : StreamApi Used
+    public List<DiscountResponse> getByDiscountPercentRange(int minPercent, int maxPercent) {
+        return discountRepository.findByDiscountPercentRange(minPercent, maxPercent)
+                .stream()
+                .map(discount -> new DiscountResponse(discount.getId(), discount.getDiscountType(), discount.getDiscountPercent()))
+                .collect(Collectors.toList());
     }
 
     @Override

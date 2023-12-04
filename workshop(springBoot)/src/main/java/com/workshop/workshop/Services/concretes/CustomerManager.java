@@ -1,14 +1,16 @@
 package com.workshop.workshop.Services.concretes;
 
 import com.workshop.workshop.Services.abstracts.CustomerService;
-import com.workshop.workshop.Services.dto.brand.requests.Customer.AddCustomerRequest;
-import com.workshop.workshop.Services.dto.brand.requests.Customer.UpdateCustomerRequest;
+import com.workshop.workshop.Services.dto.requests.Customer.AddCustomerRequest;
+import com.workshop.workshop.Services.dto.requests.Customer.UpdateCustomerRequest;
+import com.workshop.workshop.Services.dto.responses.Customer.CustomerResponse;
 import com.workshop.workshop.entities.Customer;
 import com.workshop.workshop.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -16,8 +18,8 @@ public class CustomerManager implements CustomerService {
     private final CustomerRepository customerRepository;
 
     @Autowired
-    public CustomerManager(CustomerRepository customerRepository){
-        this.customerRepository=customerRepository;
+    public CustomerManager(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
     }
 
     @Override
@@ -56,9 +58,21 @@ public class CustomerManager implements CustomerService {
         return customerRepository.findAll();
     }
 
+
     @Override
-    public List<Customer> getByFirstNameUsingJPQL(String firstName) {
-        return customerRepository.findByFirstNameUsingJPQL(firstName);
+    //TODO : StreamApi Used
+
+    public List<CustomerResponse> getByFirstNameUsingJPQL(String firstName) {
+        return customerRepository.findByFirstNameUsingJPQL(firstName).stream()
+                .map(customer -> new CustomerResponse(
+                        customer.getId(),
+                        customer.getFirstName(),
+                        customer.getLastName(),
+                        customer.getEmail(),
+                        customer.getPhone(),
+                        customer.getAdress()
+                ))
+                .collect(Collectors.toList());
     }
 
     @Override

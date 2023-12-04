@@ -1,10 +1,10 @@
 package com.workshop.workshop.Controllers;
 
 import com.workshop.workshop.Services.abstracts.BrandService;
-import com.workshop.workshop.Services.dto.brand.requests.Brand.AddBrandRequest;
-import com.workshop.workshop.Services.dto.brand.requests.Brand.UpdateBrandRequest;
+import com.workshop.workshop.Services.dto.requests.Brand.AddBrandRequest;
+import com.workshop.workshop.Services.dto.requests.Brand.UpdateBrandRequest;
+import com.workshop.workshop.Services.dto.responses.Brand.BrandResponse;
 import com.workshop.workshop.entities.Brand;
-import com.workshop.workshop.entities.Reservation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,9 +24,9 @@ public class BrandController {
         return brandService.getAll();
     }
 
-    @GetMapping("/byBrandName/{brandName}")
-    public ResponseEntity <List<Brand>> getByBrandName(@RequestParam("brandName")String brandName){
-        List<Brand> brands = brandService.getByBrandName(brandName);
+    @GetMapping("/{brandName}")
+    public ResponseEntity <List<BrandResponse>> getByBrandName(@RequestParam("brandName")String brandName){
+        List<BrandResponse> brands = brandService.getByBrandName(brandName);
         if (!brands.isEmpty()) {
             return ResponseEntity.ok(brands);
         } else {
@@ -50,31 +50,5 @@ public class BrandController {
     }
 }
 
-    // @GetMapping
-    //public List<Brand> getAll(){
-       // List<Brand> brands = brandRepository.findAll();
-        //return brands;
-    //}
 
-    // @GetMapping("{id}")
-    //public Brand getById(@PathVariable int id){
-        //return brandRepository.findById(id)
-                //.orElseThrow();
-    //}
-
-
-
-    //@DeleteMapping("{id}")
-    //public void delete(@PathVariable int id){
-        //Brand brandToDelete = brandRepository.findById(id)
-            //    .orElseThrow();
-        //brandRepository.delete(brandToDelete);
-    //}
-
-    //@PutMapping("{id}")
-    //public void update(@RequestBody Brand updatedBrand,@PathVariable int id){
-        //Brand brandToUpdate = brandRepository.findById(id).orElseThrow();
-        //brandToUpdate.setBrandName(updatedBrand.getBrandName());
-        //brandRepository.save(brandToUpdate);
-    //}
 
