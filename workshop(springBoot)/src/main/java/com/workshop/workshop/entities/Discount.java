@@ -2,6 +2,7 @@ package com.workshop.workshop.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,9 +21,11 @@ public class Discount {
     private int id;
 
     @Column(name = "discount_type")
+    @NotNull(message = "discountType  cannot be null")
     private String discountType;
 
     @Column(name = "discount_percent")
+    @NotNull(message = "discountPercent cannot be null")
     private int discountPercent;
 
     @OneToMany(mappedBy = "discount",cascade = CascadeType.ALL)

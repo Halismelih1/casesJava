@@ -6,6 +6,7 @@ import com.workshop.workshop.Services.dto.requests.Customer.UpdateCustomerReques
 import com.workshop.workshop.Services.dto.responses.Customer.CustomerResponse;
 import com.workshop.workshop.entities.Customer;
 import com.workshop.workshop.repositories.CustomerRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 
 
 @Service
+@Transactional
 public class CustomerManager implements CustomerService {
     private final CustomerRepository customerRepository;
 
@@ -30,7 +32,24 @@ public class CustomerManager implements CustomerService {
         customer.setEmail(request.getEmail());
         customer.setPhone(request.getPhone());
         customer.setAdress(request.getAdress());
+
+        applyBusinessRulesCustomer(customer);
+
         customerRepository.save(customer);
+    }
+
+    // İş kuralları
+    private void applyBusinessRulesCustomer(Customer customer) {
+
+        // Email boş olmamalı ve belirli bir formatta olmalı
+        if (customer.getEmail() != null && !customer.getEmail().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
+            throw new IllegalStateException("Invalid email format");
+        }
+
+        // Telefon numarası boş olmamalı ve belirli bir formatta olmalı
+        if (customer.getPhone() != null && !customer.getPhone().matches("\\d{10}")) {
+            throw new IllegalStateException("Phone number must be 10 digits");
+        }
     }
 
     @Override

@@ -23,6 +23,11 @@ public class ReservationController {
         return reservationService.getAll();
     }
 
+    @GetMapping("/byCustomerId")
+    public List<Reservation> findByCustomerId(int customerId) {
+        return reservationService.findByCustomerId(customerId);
+    }
+
     @GetMapping("/byTotalPriceRange")
     public List<ReservationResponse> getByTotalPriceRange(@RequestParam int minPrice, @RequestParam int maxPrice) {
         return reservationService.findByTotalPriceRange(minPrice, maxPrice);

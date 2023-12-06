@@ -2,6 +2,8 @@ package com.workshop.workshop.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,6 +19,8 @@ public class Brand {
     private int id;
 
     @Column(name = "brand_name")
+    @Size(max = 15, message = "brandName length must be at most 15 characters")
+    @NotNull(message = "brandName cannot be null")
     private String brandName;
 
     @Column(name = "contracted_gas_station")

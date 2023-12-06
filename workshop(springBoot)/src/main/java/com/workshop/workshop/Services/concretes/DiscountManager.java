@@ -24,19 +24,31 @@ public class DiscountManager implements DiscountService {
 
     @Override
     public void add(AddDiscountRequest request) {
+
         Discount discount = new Discount();
         discount.setDiscountType(request.getDiscountType());
         discount.setDiscountPercent(request.getDiscountPercent());
+
         discountRepository.save(discount);
     }
+
+
 
     @Override
     public void update(UpdateDiscountRequest request, int id) {
         Discount existingDiscount = discountRepository.findById(id).orElseThrow();
         existingDiscount.setDiscountPercent(request.getDiscountPercent());
         existingDiscount.setDiscountType(request.getDiscountType());
-        discountRepository.save(existingDiscount);
 
+        if ("New Customer".equals(existingDiscount.getDiscountType()) &&
+                (existingDiscount.getDiscountPercent() < 5 || existingDiscount.getDiscountPercent() > 15)) {
+            throw new IllegalStateException("For New Customer discount type, discount percent must be between 5 and 15");
+        }
+        if ("First Rent".equals(existingDiscount.getDiscountType()) &&
+                (existingDiscount.getDiscountPercent() < 10 || existingDiscount.getDiscountPercent() > 20)) {
+            throw new IllegalStateException("For First Rent discount type, discount percent must be between 10 and 20");
+        }
+        discountRepository.save(existingDiscount);
     }
 
     @Override

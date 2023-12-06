@@ -1,5 +1,6 @@
 package com.workshop.workshop.Services.concretes;
 
+import com.workshop.workshop.Services.abstracts.BrandService;
 import com.workshop.workshop.Services.abstracts.CarService;
 import com.workshop.workshop.Services.dto.requests.Car.AddCarRequest;
 import com.workshop.workshop.Services.dto.responses.Car.CarResponse;
@@ -32,8 +33,23 @@ public class CarManager implements CarService {
         car.setModel(request.getModel());
         car.setAvailable(request.getAvailable());
         car.setBrand(request.getBrand());
+
+        // İş kuralları
+        businessRulesCar(car);
+
         carRepository.save(car);
     }
+
+    private void businessRulesCar(Car car) {
+        if ("E-200".equals(car.getModel()) && !car.getBrand().getBrandName().equals("Mercedes")) {
+            throw new IllegalStateException("E-200 model cars can only be of Mercedes brand.");
+        }
+
+        if ("M-5".equals(car.getModel()) && !car.getBrand().getBrandName().equals("Bmw")) {
+            throw new IllegalStateException("M-5 model cars can only be of Bmw brand.");
+        }
+    }
+
 
 
     @Override

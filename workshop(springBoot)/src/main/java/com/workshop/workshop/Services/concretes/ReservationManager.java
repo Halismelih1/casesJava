@@ -28,8 +28,13 @@ public class ReservationManager implements ReservationService {
         reservation.setCar(request.getCar());
         reservation.setCustomer(request.getCustomer());
         reservation.setDiscount(request.getDiscount());
-        reservationRepository.save(reservation);
 
+        if (request.getTotalPrice() < 0) {
+            throw new IllegalStateException("Total price must be at least 0");
+
+
+    }
+        reservationRepository.save(reservation);
     }
 
     @Override
@@ -67,5 +72,10 @@ public class ReservationManager implements ReservationService {
     @Override
     public List<Reservation> getAll() {
         return reservationRepository.findAll();
+    }
+
+    @Override
+    public List<Reservation> findByCustomerId(int customerId) {
+        return reservationRepository.findByCustomerId(customerId);
     }
 }

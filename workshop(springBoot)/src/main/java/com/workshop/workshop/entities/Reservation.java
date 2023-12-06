@@ -1,6 +1,7 @@
 package com.workshop.workshop.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,6 +18,7 @@ public class Reservation {
     private int id;
 
     @Column(name = "total_price")
+    @NotNull(message = "totalPrice cannot be null")
     private int totalPrice;
 
     @ManyToOne

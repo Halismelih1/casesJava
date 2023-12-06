@@ -1,6 +1,7 @@
 package com.workshop.workshop.repositories;
 
 import com.workshop.workshop.Services.dto.responses.Discount.DiscountResponse;
+import com.workshop.workshop.Services.dto.responses.Reservation.ReservationResponse;
 import com.workshop.workshop.entities.Discount;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,4 +15,6 @@ public interface DiscountRepository extends JpaRepository<Discount,Integer> {
     List<DiscountResponse> findByDiscountPercentRange(@Param("minPercent") int minPercent, @Param("maxPercent") int maxPercent);
 
     List<Discount> findByDiscountType(String discountType);
+
+
 }

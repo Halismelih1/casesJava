@@ -17,6 +17,8 @@ public interface ReservationRepository extends JpaRepository<Reservation,Integer
                 "(r.id, r.totalPrice, r.customer, r.car, r.discount) FROM Reservation r WHERE r.totalPrice BETWEEN :minPrice AND :maxPrice")
         List<ReservationResponse> findByTotalPriceRange(@Param("minPrice") int minPrice, @Param("maxPrice") int maxPrice);
 
+        List<Reservation>findByCustomerId(int customerId);
+
 
 
     }

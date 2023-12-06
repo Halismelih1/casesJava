@@ -14,6 +14,8 @@ public interface ReservationService {
     void update(int id, UpdateReservationRequest request);
     void delete(int id);
     List<ReservationResponse> findByTotalPriceRange(int minPrice, int maxPrice);
+
+    List<Reservation>findByCustomerId(int customerId);
     List<Reservation> getAll();
 
 }
