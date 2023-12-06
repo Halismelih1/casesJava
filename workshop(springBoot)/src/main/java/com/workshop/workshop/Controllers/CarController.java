@@ -49,7 +49,11 @@ public class CarController {
 
     @PostMapping
     public void add(@RequestBody AddCarRequest request) {
-        carService.add(request);
+        try {
+            carService.add(request);
+        } catch (Exception exception) {
+            throw exception;
+        }
     }
 
     @DeleteMapping("{id}") //Delete
