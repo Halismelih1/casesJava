@@ -66,10 +66,11 @@ public class CustomerManager implements CustomerService {
     }
 
     @Override
-    public void delete(int id) {
+    public List<Customer> delete(int id) {
 
         customerRepository.deleteById(id);
 
+        return null;
     }
 
     @Override

@@ -30,6 +30,7 @@ public class DiscountManager implements DiscountService {
         discount.setDiscountPercent(request.getDiscountPercent());
 
         discountRepository.save(discount);
+        throw new IllegalStateException("Geçersiz İşlem!");
     }
 
 
@@ -53,8 +54,8 @@ public class DiscountManager implements DiscountService {
 
     @Override
     public void delete(int id) {
-
         discountRepository.deleteById(id);
+        throw new IllegalStateException("lütfen geçerli bir id giriniz!");
 
     }
 

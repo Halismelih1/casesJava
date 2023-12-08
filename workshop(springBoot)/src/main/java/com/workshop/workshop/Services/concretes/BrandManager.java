@@ -1,16 +1,15 @@
 package com.workshop.workshop.Services.concretes;
 
+
 import com.workshop.workshop.Services.abstracts.BrandService;
 import com.workshop.workshop.Services.dto.requests.Brand.AddBrandRequest;
 import com.workshop.workshop.Services.dto.requests.Brand.UpdateBrandRequest;
 import com.workshop.workshop.Services.dto.responses.Brand.BrandResponse;
 import com.workshop.workshop.entities.Brand;
-import com.workshop.workshop.entities.Car;
 import com.workshop.workshop.repositories.BrandRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,6 +32,7 @@ public class BrandManager implements BrandService {
         businessRulesBrand(brand);
 
         brandRepository.save(brand);
+
     }
 
     // iş kuralı
@@ -46,7 +46,9 @@ public class BrandManager implements BrandService {
     @Override
     public void delete(int id) {
         brandRepository.deleteById(id);
+        throw new IllegalStateException("hatalı işlem!");
     }
+
 
     @Override
     public void update(int id, UpdateBrandRequest request) {
@@ -70,6 +72,7 @@ public class BrandManager implements BrandService {
         return brandList.stream()
                 .map(brand -> new BrandResponse(brand.getId(), brand.getBrandName(), brand.getContractedGasStation()))
                 .collect(Collectors.toList());
+
 
     }
 

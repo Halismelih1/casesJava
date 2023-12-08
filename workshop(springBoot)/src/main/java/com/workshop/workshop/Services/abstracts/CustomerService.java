@@ -14,5 +14,5 @@ public interface CustomerService {
     List<Customer> getByAdress(String adress);
     void add(AddCustomerRequest request);
     void update(UpdateCustomerRequest request, int id);
-    void delete(int id);
+    List<Customer> delete(int id);
 }

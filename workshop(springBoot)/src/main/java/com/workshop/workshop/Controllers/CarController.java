@@ -33,19 +33,16 @@ public class CarController {
     }
 
     @GetMapping("/byAvailable/{available}")
-    public ResponseEntity<List<Car>> getByAvailable(@RequestParam boolean available) {
+    public ResponseEntity<List<Car>> getByAvailable(@PathVariable boolean available) {
         List<Car> cars = carService.getByAvailable(available);
-        if (!cars.isEmpty()) {
-            return ResponseEntity.ok(cars);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(cars);
     }
 
     @GetMapping("/byModelJPQL")
     public List<CarResponse> getByModelJPQL(@RequestParam String model) {
         return carService.findByModelJPQL(model);
     }
+
 
     @PostMapping
     public void add(@RequestBody AddCarRequest request) {
@@ -59,11 +56,13 @@ public class CarController {
     @DeleteMapping("{id}") //Delete
     public void delete(@PathVariable int id) {
         carService.delete(id);
+        throw new IllegalStateException("yanlış id ile silme");
     }
 
     @PutMapping("{id}") //Update
     public void update(@PathVariable int id, @RequestBody UpdateCarRequest request) {
         carService.update(id, request);
+        throw new IllegalStateException("yanlış id ile güncelleme");
     }
 }
 

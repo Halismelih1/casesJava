@@ -25,7 +25,13 @@ public class ReservationController {
 
     @GetMapping("/byCustomerId")
     public List<Reservation> findByCustomerId(int customerId) {
-        return reservationService.findByCustomerId(customerId);
+        List<Reservation> reservations = reservationService.findByCustomerId(customerId);
+
+        if (reservations.isEmpty()) {
+            throw new IllegalStateException("Bu id bulunamadı");
+        }
+
+        return reservations;
     }
 
     @GetMapping("/byTotalPriceRange")
@@ -41,6 +47,7 @@ public class ReservationController {
     @DeleteMapping("{id}")
     public void delete(@PathVariable int id){
         reservationService.delete(id);
+        throw new IllegalStateException("Rezervasyon silinirken hata oluştu. ID: " + id);
     }
 
     @PutMapping("{id}")

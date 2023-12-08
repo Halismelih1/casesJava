@@ -47,6 +47,8 @@ public class BrandController {
     @PutMapping("{id}") //Update
     public void update(@PathVariable int id, @RequestBody UpdateBrandRequest request) {
         brandService.update(id, request);
+        throw new IllegalStateException("deneme");
+
     }
 }
 
